@@ -1,0 +1,19 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "A program that takes user input, and creates an HTMLfile with the user inputted team roster with clickable links. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcstewart76/TeamProfileGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcstewart76/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/mcstewart76/TeamProfileGenerator#readme"
+}
