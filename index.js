@@ -1,6 +1,6 @@
 var inquirer = require("inquirer");
-var fs = require("fs");
-const { object } = require("webidl-conversions");
+//var fs = require("fs");
+
 
 class Employee{
     constructor(name, id, email){
@@ -26,22 +26,26 @@ class Employee{
     console.log(employeeName.email)
     }
     getRole(){
-    const employeeName = new Employee();
-    console.log(employeeName.constructor.name)
+        const employeeName = new Employee();
+        console.log(employeeName.constructor.name)
+        return employeeName.constructor.name
 
-    }
+    };
 }
 
-const e = new Employee("jim", 47, "test@test.com");
-e.getName();
-e.getId();
-e.getEmail();
-e.getRole();
+
+
+
 class Manager extends Employee{
     constructor(name, id, email, officeNum){
         super(name, id, email);
             this.officeNum = officeNum;
 
+    }
+    getRole(){
+        const employeeName = new Manager();
+        console.log(employeeName.constructor.name)
+        return employeeName.constructor.name
     }
 }
 class Engineer extends Employee{
@@ -52,9 +56,28 @@ class Engineer extends Employee{
     }
     getGitHub(){
         const engineer = new Engineer(this.github)
+        console.log(this.github)
+        console.log(engineer.github)
+        
 
     }
+    getRole(){
+        const employeeName = new Engineer();
+        console.log(employeeName.constructor.name)
+        return employeeName.constructor.name
+    }
 }
+// const e = new Engineer("jim", 47, "test@test.com");
+// e.getName();
+// e.getId();
+// e.getEmail();
+// e.getRole();
+// const ef = new Employee("jim", 47, "test@test.com");
+// ef.getName();
+// ef.getId();
+// ef.getEmail();
+// ef.getRole();
+
 class Intern extends Employee{
     constructor(name, id, email, school){
         super(name, id, email);
@@ -62,7 +85,14 @@ class Intern extends Employee{
 
     }
     getSchool(){
-
+        const intern = new Intern(this.school)
+        console.log(this.school)
+        console.log(intern.school)
+    }
+    getRole(){
+        const employeeName = new Intern();
+        console.log(employeeName.constructor.name)
+        return employeeName.constructor.name
     }
 }
 
@@ -78,6 +108,7 @@ const questions = [
                 return "Please enter a value to continue"
             }
         }
+
     },
     {
         type: 'input',
@@ -118,7 +149,36 @@ const questions = [
     
 
 ];
+inquirer
+  .prompt(questions)
+  .then((data) => {
+      console.log(data);
+       return workers(data);
+      //console.log(data.projectName)
+      // const dataset = (JSON.stringify(answers, null, '  '));
+      // console.log(dataset);
+      // console.log(dataset);
+      
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      return "Prompt couldn't be rendered in the current environment"
+    } else {
+      return "Something else went wrong"
+    }
+  });
+const workers = data => {
+    const jim = new Manager(data.teammanager, data.managerID, data.managerEmail, data.officeNum);
 
+    console.log(jim);
+    const e = new Engineer()
+}
 
+// const employees = workers.map()
+// console.log(employees);
+
+// employees.forEach(employee => {
+// console.log(employee);
+// });
 
 
